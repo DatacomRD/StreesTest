@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.dtc.strees</groupId>
+	<artifactId>StreesTest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<output.jar.name>StreesTest</output.jar.name>
+		<output.directory>target/release</output.directory>
+		<deploy.target>D:/Tools/Programming/apache-jmeter-3.3/lib/ext</deploy.target>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.dtc.common</groupId>
+			<artifactId>dicom</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>ApacheJMeter_java</artifactId>
+			<version>3.3</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.4</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<finalName>${output.jar.name}</finalName>
+					<outputDirectory>${output.directory}</outputDirectory>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- 這是為了方便本機測試時使用 -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>install</phase>
+						<configuration>
+							<target>
+								<copy file="${output.directory}/${output.jar.name}.jar"
+									tofile="${deploy.target}/${output.jar.name}.jar"/>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution> 
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
