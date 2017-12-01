@@ -15,11 +15,17 @@ StreesTest
 - 將 build 好的 StreesTest.jar 丟到 JMeter 下的 `lib\ext` 目錄中
 - 啟動 JMeter
 	- 若要建立 / 維護 / 調整測試計畫可以使用 GUI（直接執行 jmeter.bat）
-	- 若要實際進行壓測，可參考下列命令：
+	- 若要實際進行壓測，可參考下列執行語法：
 	```
 	jmeter -n -t [jmx file] -l [results file] -e -o [Path to output folder]
 	```
+	範例：
+	```
+	jmeter -n -t FHIR.jmx -l result.csv -e -o output
+	```
+	
 - 如果要調整 JVM 的參數可以參考 jmeter.bat
+- `jmx` 目錄中存放測試計畫
 
 
 開發人員注意事項
