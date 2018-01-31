@@ -65,7 +65,6 @@ public class FhirTest extends AbstractJavaSamplerClient {
 		}
 	}
 
-	@Override
 	public SampleResult runTest(JavaSamplerContext ctx) {
 		SampleResult result = new SampleResult();
 		result.sampleStart();
