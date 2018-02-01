@@ -7,7 +7,6 @@
 	<properties>
 		<output.jar.name>StreesTest</output.jar.name>
 		<output.directory>target/release</output.directory>
-		<deploy.target>D:/Tools/Programming/apache-jmeter-3.3/lib/ext</deploy.target>
 	</properties>
 	
 	<dependencies>
@@ -58,26 +57,26 @@
 				</executions>
 			</plugin>
 			
-			<!-- 這是為了方便本機測試時使用 -->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<id>copy</id>
-						<phase>install</phase>
-						<configuration>
-							<target>
-								<copy file="${output.directory}/${output.jar.name}.jar"
-									tofile="${deploy.target}/${output.jar.name}.jar"/>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution> 
-				</executions>
-			</plugin>
+			<!-- 這是為了方便本機測試時使用，自動將 jar 檔複製到指定的目錄下 -->
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<version>1.8</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>copy</id> -->
+<!-- 						<phase>install</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<copy file="${output.directory}/${output.jar.name}.jar" -->
+<!-- 									tofile="D:/apache-jmeter-3.3/lib/ext/${output.jar.name}.jar"/> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution>  -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>
