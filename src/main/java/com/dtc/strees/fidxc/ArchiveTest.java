@@ -27,7 +27,12 @@ public class ArchiveTest extends AttributeModifier {
 
 	@Override
 	protected Attributes modifyAttrs(Attributes attrs) {
+		String sopInstanceUid = UUID.randomUUID().toString();
+		attrs.setString(Tag.MediaStorageSOPInstanceUID, VR.UI, sopInstanceUid);
+		attrs.setString(Tag.SOPInstanceUID, VR.UI, sopInstanceUid);
 		attrs.setString(Tag.StudyInstanceUID, VR.UI, UUID.randomUUID().toString());
+		attrs.setString(Tag.SeriesInstanceUID, VR.UI, UUID.randomUUID().toString());
+		attrs.setString(Tag.AccessionNumber, VR.UI, UUID.randomUUID().toString());
 		return attrs;
 	}
 }
