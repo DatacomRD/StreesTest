@@ -22,15 +22,15 @@ public class SerNoGenerator {
 	synchronized public String next() {
 		long now = getCurrentTimeWithSecondsPrecision();
 
-		if ((now - last) > 1000) { //超過一秒了
+		if ((now - last) > 0) { //超過一秒了
 			last = now;
 			count = 1;
 		}
 
-		return sdf.format(new Date(now)) + df.format(count++);
+		return sdf.format(new Date(now*1000)) + df.format(count++);
 	}
 
 	private long getCurrentTimeWithSecondsPrecision() {
-		return (System.currentTimeMillis() / 1000) * 1000;
+		return System.currentTimeMillis() / 1000;
 	}
 }
